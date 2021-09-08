@@ -104,7 +104,7 @@ class InviteRowControl extends React.Component<Props, State> {
             DropdownIndicator: () => null,
           }}
           options={mapToOptions(emails)}
-          onBlur={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onBlur={e =>
             e.target.value &&
             onChangeEmails([
               ...mapToOptions(emails),
