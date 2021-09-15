@@ -104,7 +104,7 @@ export default class SelectField<
                 multiple={multiple}
                 onChange={val => {
                   const previousValue = props.value?.toString();
-                  const newValue = val.value?.toString();
+                  const newValue = val?.value?.toString();
                   if (confirm && confirm[newValue] && previousValue !== newValue) {
                     open(undefined, val);
                     return;
