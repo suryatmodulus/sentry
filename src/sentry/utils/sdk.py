@@ -243,6 +243,7 @@ def configure_sdk():
     upstream_dsn = sdk_options.pop("dsn", None)
     sdk_options["traces_sampler"] = traces_sampler
     sdk_options["release"] = f"backend@{sdk_options['release']}"
+    sdk_options["send_client_reports"] = True
 
     if upstream_dsn:
         transport = make_transport(get_options(dsn=upstream_dsn, **sdk_options))
