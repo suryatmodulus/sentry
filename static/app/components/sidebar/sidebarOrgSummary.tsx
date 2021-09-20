@@ -1,22 +1,17 @@
 import styled from '@emotion/styled';
 
 import OrganizationAvatar from 'app/components/avatar/organizationAvatar';
-import {tn} from 'app/locale';
 import overflowEllipsis from 'app/styles/overflowEllipsis';
-import {Organization, OrganizationSummary} from 'app/types';
+import {OrganizationSummary} from 'app/types';
 
 type Props = {
   organization: OrganizationSummary;
 };
 
 const SidebarOrgSummary = ({organization}: Props) => {
-  const fullOrg = organization as Organization;
-  const projects = fullOrg.projects && fullOrg.projects.length;
+  // Extra may be used to add additional details under the organization name.
+  // This is currently unused.
   const extra: string[] = [];
-
-  if (projects) {
-    extra.push(tn('%s project', '%s projects', projects));
-  }
 
   return (
     <OrgSummary>
