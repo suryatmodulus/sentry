@@ -35,7 +35,7 @@ def _scan_for_suspect_projects() -> None:
     # of the nitty-gritty redis work
     cluster: redis._RedisCluster = redis.get_cluster_from_options(CLUSTER_KEY)
 
-    suspect_projects = set([])
+    suspect_projects = set()
     for item in cluster.scan_iter(
         # assuming the format is "symbolicate_event_lpq:<project_id>:<posix timestamp or other>"
         match="symbolicate_event_lpq:*",
@@ -47,7 +47,7 @@ def _scan_for_suspect_projects() -> None:
             calculate_lpq_eligibility(project_id)
 
     # todo: populate with contents of redis-stored kill switch
-    current_lpq_projects = set([])
+    current_lpq_projects = set()
     deleted_projects = current_lpq_projects.difference(suspect_projects)
 
     for deleted in deleted_projects:
